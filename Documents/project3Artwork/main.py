@@ -11,6 +11,12 @@ def main():
 
         if user_input_choice == 1:
             inputAddArtwork.adding_artist_from_user()
+        elif user_input_choice == 2:
+            inputAddArtwork.adding_new_artwrk_from_user()
+        elif user_input_choice == 3:
+            inputAddArtwork.deleting_artwork_from_user()
+
+
 
 
 
@@ -19,7 +25,9 @@ def main():
 
 
 def create_menu():
-    print("Add a new artist")
+    print('Add a new artist ')
+    print('Add a new artwork ')
+    print('Delete an artwork ')
 
     get_user_choice = int(input('Please enter your choice: '))
 
