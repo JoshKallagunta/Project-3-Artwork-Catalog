@@ -2,12 +2,12 @@ import sqlite3
 from peewee import *
 from dbConfig import (database_path)
 
-
+#DB class model, DB path
 class databaseModel(Model):
     class Meta:
         db = SqliteDatabase(database_path)
 
-
+#Artist class model for getting data about the artist
 class ArtistData(databaseModel):
     artistName = CharField()
     artistEmail = CharField()
@@ -15,8 +15,11 @@ class ArtistData(databaseModel):
     def __str__(self):
         return f'ID {self.id}, Artist Name: {self.artistName}, Artist Email: {self.artistEmail}'
 
-
+#Artwork class model for getting data about the artist
+#using foreign key relationship for the name of artist 
+#so that a search or update can be done through the artist name
 class ArtworkData(databaseModel):
+    #Vina helped with this model of foreign key/db setup in class lab
     name_of_artist = ForeignKeyField(ArtistData, to_field= 'artistName')
     name_of_artwork = CharField()
     price_of_artwork = FloatField()

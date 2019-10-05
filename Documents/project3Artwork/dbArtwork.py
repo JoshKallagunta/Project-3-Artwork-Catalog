@@ -27,6 +27,7 @@ def adding_artwork(name_of_artist, name_of_artwork, price_of_artwork, availabili
 def deleting_artwork(name_of_artwork):
     ArtworkData.delete().where(ArtworkData.name_of_artwork == name_of_artwork).execute()
 
+
 def search_for_artwork_available(artistName):
 
     search = ArtworkData.select().where((ArtworkData.name_of_artist == artistName ) | (ArtworkData.availability_of_artwork == True))

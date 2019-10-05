@@ -34,6 +34,17 @@ def deleting_artwork_from_user():
     except:
         print('Please enter the artwork name again: ')
 
+#Method for searching for an artwork using the artist's name
+#searches the Artwork table
+#called in main.py class for the UI 
+def search_artwork_from_user():
+    try:
+        artwork_artist_name_search = input('Enter the artist name you would like yo search by: ')
+        artworkCatalog.ArtworkData.search_for_artwork_available(artwork_artist_name_search)
+    except:
+        print('Sorry, couldn''t find artist, please enter another')
+
+
 
 
 
