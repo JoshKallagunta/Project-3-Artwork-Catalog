@@ -1,13 +1,19 @@
 import sqlite3
 from peewee import *
 from dbConfig import (database_path)
+        
+db = SqliteDatabase('database/artworkProject.db')
+
 
 #DB class model, DB path
+#Documention. http://docs.peewee-orm.com/en/latest/peewee/database.html#connecting-using-a-database-url
 class databaseModel(Model):
     class Meta:
-        db = SqliteDatabase(database_path)
+        db = SqliteDatabase('database/artworkProject.db')
 
 #Artist class model for getting data about the artist
+#Used reading_list as a reference when creating ArtistData and ArtworkData
+#https://github.com/claraj/hello_sqlite_python/blob/master/peewee_orm/reading_list/model.py
 class ArtistData(databaseModel):
     artistName = CharField()
     artistEmail = CharField()
@@ -29,6 +35,7 @@ class ArtworkData(databaseModel):
         return f'Artist Name: {self.name_of_artist}, Artwork Name: {self.name_of_artwork}, Price : ${self.price_of_artwork}, Available: {self.availability_of_artwork} '
 
 
+db.connect()
 
 
 #Adding a new artist and getting user input 

@@ -2,10 +2,14 @@ from peewee import *
 from artworkCatalog import (ArtistData,ArtworkData)
 from dbConfig import database_path
 
-#Using
-db = SqliteDatabase(database_path)
+#Using http://docs.peewee-orm.com/en/latest/peewee/models.html#creating-model-tables
+#to create the table models
+db = SqliteDatabase('database/artworkProject.db')
 #Connection to the db
 db.connect()
+
+#Used bookstore.py as reference when creating these methods:
+#https://github.com/claraj/hello_sqlite_python/blob/master/peewee_orm/reading_list/bookstore.py
 
 #Creating the tables from my classes in artworkCatalog
 #Those tables being ArtistData and ArtworkData
@@ -36,6 +40,10 @@ def search_for_artwork_available(artistName):
     #search ArtworkData for the specific artwork, prints the result (is_artwork_available)
     for is_artwork_available in search:
         print (is_artwork_available)
+
+def artist_count(ArtistData):
+    return ArtistData.select().count()
+
 
 
 
